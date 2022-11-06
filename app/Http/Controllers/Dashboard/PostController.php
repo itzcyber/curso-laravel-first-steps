@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -21,7 +22,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(2);
+        return view('dashboard.post.index', compact('posts'));
     }
 
     /**
@@ -31,12 +33,13 @@ class PostController extends Controller
      */
     public function create()
     {
-
         $categories = Category::pluck('id', 'title');
 
         //User::get()->where();
         echo view('dashboard.post.create', compact('categories'));
     }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -52,14 +55,19 @@ class PostController extends Controller
 
         //dd($validated->errors());
 
+        //$data = $request->validated();
+        //$data['slug'] = Str::slug($data['title']);
 
-        $data = array_merge($request->all(), ['image' => '']);
 
-        Post::create($data);
+        //$data = array_merge($request->all(), ['image' => '']);
+
+        Post::create($request->validated());
+
         echo "guardao";
+        //dd($data);
 
 
-        //dd($request);
+
     }
 
     /**
@@ -79,9 +87,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Post $post)
     {
-        //
+        $categories = Category::pluck('id', 'title');
+        echo view('dashboard.post.create', compact('categories','post'));
     }
 
     /**
@@ -93,7 +103,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->validated());
     }
 
     /**

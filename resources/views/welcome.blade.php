@@ -22,5 +22,7 @@
     </head>
     <body>
         <h1>Testing</h1>
+
+        <a href="post/create">crear post</a>
     </body>
 </html>
