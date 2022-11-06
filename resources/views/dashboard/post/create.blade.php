@@ -1,26 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear Post</title>
-</head>
-<body>
-    <h1>Crear Post</h1>
+@extends('dashboard.layout')
+
+@section('content')
+<h1>Crear Post</h1>
+
+    @include('dashboard.fragment._errors-form')
 
     <form action="{{ route('post.store') }}" method="post">
         @csrf
 
         <label for="">Title</label>
         <br>
-        <input type="text" name="title">
+        <input type="text" name="title" value="{{ old('title') }}">
 
         <br>
 
         <label for="">Slug</label>
         <br>
-        <input type="text" name="slug">
+        <input type="text" name="slug" value="{{ old('slug') }}">
 
         <label for="">Categoria</label>
         <select name="category_id" id="">
@@ -40,7 +36,7 @@
 
         <label for="">Contenido</label>
         <br>
-        <textarea name="content"></textarea>
+        <textarea name="content""></textarea>
 
         <br>
 
@@ -50,12 +46,11 @@
 
         <br>
 
-        <button type="submit" name="title">Enviar</button>
+        <button type="submit" name="">Crear Post</button>
 
     </form>
 
 
 
 
-</body>
-</html>
+@endsection

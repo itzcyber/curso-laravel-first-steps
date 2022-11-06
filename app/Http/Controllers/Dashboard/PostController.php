@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Post;
-use App\Models\User;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use App\Models\Post;
+use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StoreRequest;
+
 
 class PostController extends Controller
 {
@@ -27,27 +31,34 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('id', 'title');
 
+        $categories = Category::pluck('id', 'title');
 
         //User::get()->where();
         echo view('dashboard.post.create', compact('categories'));
-
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
+        //dd($request->all());
+
+        //$validated = $request->validate(StoreRequest::myRules());
+        //$validated = Validator::make($request->all(), StoreRequest::myRules());
+
+        //dd($validated->errors());
+
+
         $data = array_merge($request->all(), ['image' => '']);
 
-        dd($data);
         Post::create($data);
         echo "guardao";
+
+
         //dd($request);
     }
 
