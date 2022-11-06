@@ -7,7 +7,7 @@
 
     <form action="{{ route('post.update',$post->id) }}" method="post">
         @csrf
-        @method('PUT')
+        @method("PATCH")
 
         <label for="">Title</label>
         <br>
@@ -17,7 +17,7 @@
 
         <label for="">Slug</label>
         <br>
-        <input type="text" name="slug" value="{{ $post->slug }}">
+        <input readonly type="text" name="slug" value="{{ $post->slug }}">
 
         <label for="">Categoria</label>
         <select name="category_id" id="">
@@ -47,7 +47,7 @@
 
         <br>
 
-        <button type="submit" name="">Crear Post</button>
+        <button type="submit" name="">Editar Post</button>
 
         <br>
         <a href="/">

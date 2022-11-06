@@ -36,14 +36,15 @@
                     {{ $p->posted }}
                 </td>
                 <td>
+                    
                     <a href="{{ route("post.edit", $p) }}">Editar</a>
                     <a href="{{ route("post.show", $p) }}">Ver</a>
-
-                    <form action="{{ route("post.destroy", $p) }}" method="POST">
+                    <form action="{{ route("post.destroy", $p) }}" method="post">
                         @method("DELETE")
                         @csrf
                         <button type="submit">Eliminar</button>
                     </form>
+
                 </td>
             </tr>
             @endforeach
