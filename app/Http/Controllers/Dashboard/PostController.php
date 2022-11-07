@@ -23,6 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $posts = Post::paginate(2);
         return view('dashboard.post.index', compact('posts'));
     }
@@ -35,9 +36,10 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::pluck('id', 'title');
+        $post = new Post();
 
         //User::get()->where();
-        echo view('dashboard.post.create', compact('categories'));
+        echo view('dashboard.post.create', compact('categories', 'post'));
     }
 
 
@@ -51,8 +53,8 @@ class PostController extends Controller
     {
         //dd($request->all());
 
-        //$validated = $request->validate(StoreRequest::myRules());
-        //$validated = Validator::make($request->all(), StoreRequest::myRules());
+        $validated = $request->validate(StoreRequest::myRules());
+        $validated = Validator::make($request->all(), StoreRequest::myRules());
 
         //dd($validated->errors());
 
@@ -64,10 +66,10 @@ class PostController extends Controller
 
         Post::create($request->validated());
 
-        echo "guardao";
+        
         //dd($data);
 
-
+        return to_route("post.index");
 
     }
 
@@ -79,7 +81,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        echo "show";
+        return view("dashboard.post.show", compact('post'));
     }
 
     /**
@@ -105,6 +107,8 @@ class PostController extends Controller
     public function update(PutRequest $request, Post $post)
     {
         $post->update($request->validated());
+        return to_route("post.index");
+        
     }
 
     /**
@@ -115,6 +119,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        echo "destroy";
+        $post->delete();
+        return to_route("post.index");
     }
 }
