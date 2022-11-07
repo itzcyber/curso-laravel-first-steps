@@ -4,22 +4,10 @@ namespace App\Http\Requests\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class PutRequest extends FormRequest
 {
-
-
-    static public function myRules()
-    {
-        return [
-            "title" => "required|min:1|max:255",
-            //"slug" => "required|min:1|max:255|unique:posts",
-            "category_id" => "required",
-            "content" => "required|min:1",
-            "description" => "required|min:1|max:255",
-            "posted" => "required"
-        ];
-    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -38,12 +26,27 @@ class PutRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required|min:1|max:255",
-            "slug" => "required|min:1|max:255",
+            "title" => "required|min:5|max:255",
+            "slug" => [],
             "content" => "required|min:1",
             "category_id" => "required",
             "description" => "required|min:1|max:255",
-            "posted" => "required"
+            "posted" => "required",
+            "image" => "mimes:jpeg,jpg,png|max:10240"
+        ];
+    }
+
+    public static function myRules($post)
+    {
+        return [
+            "title" => "required|min:5|max:255",
+            "slug" => [Rule::unique('posts')->ignore($post->id)],
+            "content" => "required|min:1",
+            "category_id" => "required",
+            "description" => "required|min:1|max:255",
+            "posted" => "required",
+            "image" => "mimes:jpeg,jpg,png|max:10240"
+            
         ];
     }
 }

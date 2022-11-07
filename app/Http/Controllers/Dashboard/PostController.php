@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Post;
 use App\Models\Category;
@@ -39,7 +41,7 @@ class PostController extends Controller
         $post = new Post();
 
         //User::get()->where();
-        echo view('dashboard.post.create', compact('categories', 'post'));
+        return view('dashboard.post.create', compact('categories', 'post'))->with(['button' => "Crear Post"]);
     }
 
 
@@ -54,7 +56,7 @@ class PostController extends Controller
         //dd($request->all());
 
         $validated = $request->validate(StoreRequest::myRules());
-        $validated = Validator::make($request->all(), StoreRequest::myRules());
+        //$validated = Validator::make($request->all(), StoreRequest::myRules());
 
         //dd($validated->errors());
 
@@ -69,7 +71,7 @@ class PostController extends Controller
         
         //dd($data);
 
-        return to_route("post.index");
+        return to_route("post.index")->with('status',"Registro creado.");
 
     }
 
@@ -94,7 +96,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::pluck('id', 'title');
-        echo view('dashboard.post.edit', compact('categories','post'));
+        return view('dashboard.post.edit', compact(['categories','post']))->with(['button' => "Editar Post"]);
     }
 
     /**
@@ -106,13 +108,26 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
+        $validated = $request->validate(PutRequest::myRules($post));
+
+        //dd($request->validated()["image"]);
+        if ( isset($request->validated()["image"]) && $request->validated()["image"]) {
+
+            $filename = time().'.'.$request->validated()["image"]->getClientOriginalExtension();
+            $request->validated()["image"]->move(public_path("/image"), $filename);  
+            //si la sube, pero da error en la pagina de edit 
+        }
+
+        
         $post->update($request->validated());
-        return to_route("post.index");
+        //$request->session()->flash('status',"Registro Actualizado.");
+        return to_route("post.index")->with('status',"Registro Actualizado.");
+
         
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified resource from storage.  
      *
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
@@ -120,6 +135,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route("post.index");
+        return to_route("post.index")->with('status',"Registro Eliminado.");
     }
 }

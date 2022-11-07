@@ -8,7 +8,8 @@
 
         <label for="">Slug</label>
         <br>
-        <input type="text" name="slug" value="{{ old("slug"), $post->slug }}">
+        @yield('input_slug')
+        
 
         <label for="">Categoria</label>
         <select name="category_id" id="">
@@ -36,9 +37,14 @@
         <br>
         <textarea name="description">{{ old("description",$post->description) }}</textarea>
 
+        @if (isset($task) && $task == 'edit')
+            <label for="">Imagen</label> 
+            <input type="file" name="image">
+        @endif
+
         <br>
 
-        <button type="submit" name="">Crear Post</button>
+        <button type="submit" name="">{{ $button? $button:'Crear Post' }}</button>
 
         <br>
         <a href="/">

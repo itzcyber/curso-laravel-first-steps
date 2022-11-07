@@ -5,9 +5,16 @@
 
     @include('dashboard.fragment._errors-form')
 
-    <form action="{{ route('post.update',$post->id) }}" method="post">
+    <form action="{{ route('post.update',$post->id) }}" method="post" enctype="multipart/form-data">
         @method("PATCH")
-        @include('dashboard.post._form')
+        @section('input_slug')
+        <input type="text" name="slug" value="{{old("slug")?old("slug"): $post->slug}}" readonly>
+        @endsection
+
+
+
+        @include('dashboard.post._form',["task" => "edit"])
+
     </form>
 
 @endsection

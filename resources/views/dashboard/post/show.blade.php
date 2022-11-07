@@ -3,10 +3,10 @@
 @section('content')
     <h1>Viendo el Post: {{ $post->title }}</h1>
 
-    <p> {{ $post->posted }}</p>
+    <p>Posted: {{ $post->posted }}</p>
 
-    <p> {{ $post->description }}</p>
+    <p>Descripcion: {{ $post->description }}</p>
     
-    <div> {{ $post->content }}</div>
+    <div>Contenido: {{ $post->content }}</div>
 
 @endsection
