@@ -108,21 +108,38 @@ class PostController extends Controller
      */
     public function update(PutRequest $request, Post $post)
     {
+
         $validated = $request->validate(PutRequest::myRules($post));
 
+        $data = $request->validated();
+
         //dd($request->validated()["image"]);
-        if ( isset($request->validated()["image"]) && $request->validated()["image"]) {
+        if ( isset($data["image"])) {
+            //$request->validated()["image"]->move(public_path("image"), $filename);  
+            
+            $filename = time().'.'.$data["image"]->getClientOriginalExtension();
 
-            $filename = time().'.'.$request->validated()["image"]->getClientOriginalExtension();
-            $request->validated()["image"]->move(public_path("/image"), $filename);  
-            //si la sube, pero da error en la pagina de edit 
+            $request->file("image")->move(public_path("image"), $filename); 
+            
         }
+        //dd($request->all());
 
-        
-        $post->update($request->validated());
+        //$post->update($request->validated());
+
+        $post->update([
+            "title" => $data["title"],
+            "content" => $data["content"],
+            "category_id" => $data["category_id"],
+            "description" => $data["description"],
+            "posted" => $data["posted"],
+            "image" => $filename
+        ]);
+
+        /* $post->image = $filename;
+        $post->save(); */
+
         //$request->session()->flash('status',"Registro Actualizado.");
         return to_route("post.index")->with('status',"Registro Actualizado.");
-
         
     }
 
@@ -135,6 +152,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return to_route("post.index")->with('status',"Registro Eliminado.");
+        return to_route("post.index")->with('status',"Registro Eliminado. ");
     }
 }

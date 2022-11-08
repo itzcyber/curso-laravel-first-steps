@@ -46,7 +46,6 @@ class PutRequest extends FormRequest
             "description" => "required|min:1|max:255",
             "posted" => "required",
             "image" => "mimes:jpeg,jpg,png|max:10240"
-            
         ];
     }
 }

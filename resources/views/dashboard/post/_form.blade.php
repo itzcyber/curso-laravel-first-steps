@@ -29,7 +29,7 @@
 
         <label for="">Contenido</label>
         <br>
-        <textarea name="content"" >{{ old("content",$post->content) }}</textarea>
+        <textarea name="content">{{ old("content",$post->content) }}</textarea>
 
         <br>
 
