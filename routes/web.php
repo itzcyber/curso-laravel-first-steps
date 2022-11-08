@@ -21,9 +21,11 @@ Route::get(
     }
 );
 
-Route::resource('post', PostController::class);
-
-Route::resource('category', CategoryController::class);
+Route::group(['prefix' => 'dashboard'], function ()
+{
+    Route::resource('post', PostController::class);
+    Route::resource('category', CategoryController::class);   
+});
 
 
 /* Route::get('post', [PostController::class, 'index']);
