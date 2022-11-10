@@ -118,8 +118,8 @@ class PostController extends Controller
             //$request->validated()["image"]->move(public_path("image"), $filename);  
             
             $filename = time().'.'.$data["image"]->getClientOriginalExtension();
-
             $request->file("image")->move(public_path("image"), $filename); 
+            $post->image = $filename;
             
         }
         //dd($request->all());
@@ -132,7 +132,6 @@ class PostController extends Controller
             "category_id" => $data["category_id"],
             "description" => $data["description"],
             "posted" => $data["posted"],
-            "image" => $filename
         ]);
 
         /* $post->image = $filename;

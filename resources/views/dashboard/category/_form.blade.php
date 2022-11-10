@@ -1,21 +1,13 @@
 @csrf
 
-        <label for="">Title</label>
+        <label for="">Titul@ de nueva categoria:</label>
         <br>
-        <input type="text" name="title" value="{{ old("title", $category->title) }}">
-
-        <br>
-
-        <label for="">Slug</label>
-        <br>
-        
-        @yield('input_slug')
+        <input class="form-control mx-1/3" type="text" name="title" value="{{ old("title", $category->title) }}">
         
         <br>
 
-        <button type="submit" name="">{{ $button? $button:'Crear Categoria' }}</button>
+        <button class="btn btn-success" type="submit" name="">{{ $button? $button:'Crear categoria' }}</button>
 
-        <br>
-        <a href="/">
+        <a class="btn btn-danger" href="/dashboard/category">
             Volver
         </a>

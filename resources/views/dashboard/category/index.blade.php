@@ -2,10 +2,7 @@
 
 @section('content')
 
-    <a href="{{ route("category.create") }}">Crear Post</a>
-
-
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>
@@ -23,13 +20,13 @@
                 <td>
                     {{ $c->title }}
                 </td>
-                <td>
-                    <a href="{{ route("category.edit", $c) }}">Editar</a>
-                    <a href="{{ route("category.show", $c) }}">Ver</a>
+                <td class="alineador border">
+                    <a class="btn btn-primary mt-2" href="{{ route("category.edit", $c) }}">Editar</a>
+                    <a class="btn btn-primary mt-2" href="{{ route("category.show", $c) }}">Ver</a>
                     <form action="{{ route("category.destroy", $c) }}" method="post">
                         @method("DELETE")
                         @csrf
-                        <button type="submit">Eliminar</button>
+                        <button class="btn btn-danger mt-2" type="submit">Eliminar</button>
                     </form>
 
                 </td>
@@ -37,6 +34,8 @@
             @endforeach
         </tbody>
     </table>
+
+    <a class="btn btn-success my-3" href="{{ route("category.create") }}">Crear categoria</a>
 
     {{ $categories->links() }}
 

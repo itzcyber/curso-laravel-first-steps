@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/*tabla styles */ 
+.table {
+    @apply table-auto w-full
+}
+
+.table th {
+    @apply px-6 py-4 bg-gray-50 font-medium text-gray-800 uppercase border leading-4 tracking-widest
+}
+
+.table tr {
+    @apply border text-center
+}
+
+.table td {
+    @apply px-6 py-4 whitespace-normal border
+}
+
+.alineador {
+    @apply text-right
+}
+/*tabla styles */
+
+
+/*formulario styles */
+
+
+.form-control {
+    @apply block rounded-sm shadow-sm bg-slate-300 w-full
+}
+
+
+/*formulario styles */
+
+
+/*button styles */
+
+.btn {
+    @apply border rounded-lg px-3 py-2 text-white font-bold bg-pink-300 hover:bg-pink-200 inline-block transition-all
+}
+
+.btn-danger {
+    @apply bg-red-600 hover:bg-red-800 border-red-600 text-white
+}
+
+.btn-success{
+    @apply bg-emerald-500 hover:bg-emerald-800 border-emerald-500 text-white
+}
+
+.btn-primary{
+    @apply bg-blue-400 hover:bg-blue-800 border-blue-400 text-white
+}
+
+.btn-warning{
+    @apply bg-yellow-400 hover:bg-yellow-700 border-yellow-400 text-white
+}
+/*button styles */
+
+
+/*card styles */
+
+.card {
+    @apply p-6 rounded shadow-sm
+}
+
+.card-white {
+    @apply bg-white
+}
+
+
+/*card styles */

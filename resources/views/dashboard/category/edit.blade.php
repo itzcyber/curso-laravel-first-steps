@@ -1,8 +1,14 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <h1>Editar category: {{ $category->title }}</h1>
+    <h1 class="font-bold">Editar categoria:</h1>
+    <br>
+    <div class="container border shadow-sm mx-auto">
+        <h1> {{ $category->title }}</h1>
 
+    </div>
+    
+    <br>
     @include('dashboard.fragment._errors-form')
 
     <form action="{{ route('category.update',$category->id) }}" method="post">

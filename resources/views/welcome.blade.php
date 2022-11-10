@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Dashboard</title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,8 +21,16 @@
         </style>
     </head>
     <body>
-        <h1>Testing</h1>
+        <h1>Dashboard</h1>
 
-        <a href="post/create">crear post</a>
+        <a href="dashboard/post/create">Crear un Post</a>
+        <br>
+        <a href="dashboard/category/create">Crear una categoria</a>
+        <br>
+        <br>
+        <a href="dashboard/post">Index de Posts</a>
+        <br>
+        <a href="dashboard/category">Index de Categorias</a>
+
     </body>
 </html>

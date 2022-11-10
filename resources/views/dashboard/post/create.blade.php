@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('content')
-<h1>Crear Post</h1>
+<h1>Rellenar contenido de los post: </h1>
 
     @include('dashboard.fragment._errors-form')
 

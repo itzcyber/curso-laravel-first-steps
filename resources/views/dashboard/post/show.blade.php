@@ -9,4 +9,10 @@
     
     <div>Contenido: {{ $post->content }}</div>
 
+    
+    <a class="btn" href="/dashboard/post">
+        Volver
+    </a>
+
 @endsection
+
