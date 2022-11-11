@@ -1,7 +1,8 @@
 @extends('dashboard.layout')
 
 @section('content')
-    <h1>Editando el contenido del post: {{ $post->title }}</h1>
+    <h1 class="font-bold">Editando el contenido de: </h1>
+    - {{ $post->title }}
 
     @include('dashboard.fragment._errors-form')
 

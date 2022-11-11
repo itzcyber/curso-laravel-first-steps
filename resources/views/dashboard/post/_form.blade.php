@@ -1,14 +1,14 @@
 @csrf
 
     <br>
-        <label for="">Titul@</label>
+        <label class="font-bold" for="">Titul@:</label>
         <input type="text" class="form-control" name="title" value="{{ old("title", $post->title) }}">
         
         @section('input_slug')
         <input class="form-control" type="text" name="slug" value="{{ old("slug"), $post->slug }}">
         @endsection
 
-        <label for="">Seleccionar categoria:</label>
+        <label class="font-bold" for="">Seleccionar una categoria:</label>
         <select class="form-control" name="category_id" id="">
             <option value=""></option>
             @foreach ($categories as $title => $id)
@@ -16,16 +16,16 @@
             @endforeach
         </select>
 
-        <label for="">Posteado?</label>
+        <label class="font-bold" for="">¿Está posteado?</label>
         <select name="posted" class="form-control">
             <option {{ old("posted",$post->posted) == "no" ? "selected" : "" }} value="no">No</option>
             <option {{ old("posted",$post->posted) == "yes" ? "selected" : "" }} value="yes">Si</option>
         </select>
 
-        <label for="">Contenido</label>
+        <label class="font-bold" for="">Contenido:</label>
         <textarea class="form-control" name="content">{{ old("content",$post->content) }}</textarea>
 
-        <label for="">Descripción</label>
+        <label class="font-bold" for="">Descripción:</label>
         <textarea class="form-control" name="description">{{ old("description",$post->description) }}</textarea>
 
     
@@ -35,7 +35,7 @@
             @endif
 
         <br>
-        <button class="btn btn-success mt-3" type="submit" name="">{{ $button? $button:'Crear Post' }}</button>
+        <button class="btn btn-success mt-3 " type="submit" name="">{{ $button? $button:'Crear Post' }}</button>
 
         <a class="btn" href="/dashboard/post">
             Volver

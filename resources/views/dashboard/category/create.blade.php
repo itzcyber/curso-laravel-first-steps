@@ -1,13 +1,12 @@
 @extends('dashboard.layout')
 
 @section('content')
-<h1>Creando categoria nueva:</h1>
 
-<br>
+<h1 class="font-bold">Creando categoria nueva:</h1>
+
     @include('dashboard.fragment._errors-form')
 
     <form action="{{ route('category.store') }}" method="post">
-        
         @section('input_slug')
         <input type="text" name="slug" value="{{ old("slug"), $category->slug }}">
         @endsection

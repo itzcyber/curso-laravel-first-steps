@@ -41,23 +41,23 @@
 /*button styles */
 
 .btn {
-    @apply border rounded-lg px-3 py-2 text-white font-bold bg-pink-300 hover:bg-pink-200 inline-block transition-all
+    @apply border rounded-lg px-3 py-2 text-white font-bold bg-yellow-300 hover:bg-yellow-200 inline-block transition-all border-solid border-gray-200 border-4
 }
 
 .btn-danger {
-    @apply bg-red-600 hover:bg-red-800 border-red-600 text-white
+    @apply bg-red-600 hover:bg-red-800 border-red-600 text-white border-solid border-gray-200 border-4
 }
 
 .btn-success{
-    @apply bg-emerald-500 hover:bg-emerald-800 border-emerald-500 text-white
+    @apply bg-emerald-500 hover:bg-emerald-800 border-emerald-500 text-white border-solid border-gray-200 border-4
 }
 
 .btn-primary{
-    @apply bg-blue-400 hover:bg-blue-800 border-blue-400 text-white
+    @apply bg-blue-400 hover:bg-blue-800 border-blue-400 text-white border-solid border-gray-200 border-4
 }
 
 .btn-warning{
-    @apply bg-yellow-400 hover:bg-yellow-700 border-yellow-400 text-white
+    @apply bg-yellow-400 hover:bg-yellow-700 border-yellow-400 text-white border-solid border-gray-200 border-4
 }
 /*button styles */
 
@@ -65,12 +65,19 @@
 /*card styles */
 
 .card {
-    @apply p-6 rounded shadow-sm
+    @apply border-double border-8 p-6 rounded shadow-sm
 }
 
 .card-white {
     @apply bg-white
 }
-
-
 /*card styles */
+
+/*image styles */
+
+.img {
+    border-radius: 20px;
+}
+
+/*image styles */
+
