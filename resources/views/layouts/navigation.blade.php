@@ -19,13 +19,13 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
-                        {{ __("Post") }}
+                        {{ __("Posts") }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('category.index')" :active="request()->routeIs('category.index')">
-                        {{ __("Category") }}
+                        {{ __("Categorias") }}
                     </x-nav-link>
                 </div>
             </div>

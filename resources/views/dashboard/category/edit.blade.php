@@ -14,9 +14,8 @@
     <form action="{{ route('category.update',$category->id) }}" method="post">
         @method("PATCH")
         @section('input_slug')
-        <input type="text" name="slug" value="{{old("slug")?old("slug"): $category->slug}}" readonly>
-        @endsection
 
+        @endsection
         @include('dashboard.category._form',["task" => "edit"])
 
     </form>

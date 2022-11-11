@@ -4,9 +4,14 @@
         <label class="font-bold" for="">Titul@:</label>
         <input type="text" class="form-control" name="title" value="{{ old("title", $post->title) }}">
         
+        <label for="" class="font-bold">Slug</label>
+        <input class="form-control" type="text" name="slug" value="{{old("slug")?old("slug"): $post->slug}}" readonly>
+
+        
+        {{-- 
         @section('input_slug')
         <input class="form-control" type="text" name="slug" value="{{ old("slug"), $post->slug }}">
-        @endsection
+        @endsection --}}
 
         <label class="font-bold" for="">Seleccionar una categoria:</label>
         <select class="form-control" name="category_id" id="">
