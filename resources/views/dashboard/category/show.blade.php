@@ -13,9 +13,6 @@
     <a class="btn btn-danger" href="/dashboard/category">
         Volver
     </a>
-
-    
-
 </div>
 
 

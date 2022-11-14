@@ -51,6 +51,12 @@
                 <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
+                            
+                <div class="">
+                    <a class="btn btn-danger ml-10 text-sm" href="/">
+                        Volver
+                    </a>
+                </div>
             </div>
         </form>
     </x-auth-card>
