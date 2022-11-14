@@ -37,7 +37,7 @@ class StoreRequest extends FormRequest
     {
         return [
             "title" => "required|min:5|max:255",
-            "slug" => [Rule::unique('posts')]
+            //"slug" => [Rule::unique('posts')]
         ];
     }
 
@@ -45,7 +45,7 @@ class StoreRequest extends FormRequest
     {
         return [
             "title" => "required|min:5|max:255",
-            "slug" => [Rule::unique('posts')]
+            //"slug" => [Rule::unique('posts')]
         ];
     }
 }

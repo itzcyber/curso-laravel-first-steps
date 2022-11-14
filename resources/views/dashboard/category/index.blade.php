@@ -6,7 +6,7 @@
         <thead>
             <tr>
                 <th>
-                    Titulo
+                    Nombre de la categoria
                 </th>
                 <th>
                     Acciones
@@ -20,7 +20,7 @@
                 <td>
                     {{ $c->title }}
                 </td>
-                <td class="alineador border">
+                <td class="alineador border w-1/6">
                     <a class="btn btn-primary mt-2" href="{{ route("category.edit", $c) }}">Editar</a>
                     <a class="btn btn-primary mt-2" href="{{ route("category.show", $c) }}">Ver</a>
                     <form action="{{ route("category.destroy", $c) }}" method="post">
