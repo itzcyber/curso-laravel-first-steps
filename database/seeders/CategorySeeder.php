@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
+
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
 
 class CategorySeeder extends Seeder
@@ -19,12 +20,13 @@ class CategorySeeder extends Seeder
     {
         Schema::disableForeignKeyConstraints();
         Category::truncate();
+        
 
-        for ($i = 0; $i < 20 ; $i++) { 
+        for ($i = 1; $i < 11 ; $i++) { 
             Category::create(
                 [
                     'title' => "Categoria $i",
-                    'slug' => "categoria-$i"
+                    'slug' => "Categoria-$i"
                 ]
             );
         }
