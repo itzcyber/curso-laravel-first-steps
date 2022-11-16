@@ -20,18 +20,18 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
+        //disable FK : para evitar problemas al truncar la table
         Schema::disableForeignKeyConstraints();
         
         Post::truncate();
 
-        //random enum para posted
+        //random del array rPosted para conseguir valor enum para posted
         $rPosted = ['yes','no'];
         //
 
         for ($i = 1; $i < 30 ; $i++) { 
-            
 
-            //random de category sacado de la tabla categorias creada, luego random title
+            //random de category sacado de la tabla categorias creada(solo primer valor), luego random title
             $c = Category::inRandomOrder()->first();
             $title = Str::random(20);
 
@@ -44,12 +44,10 @@ class PostSeeder extends Seeder
                     'posted' => $rPosted[rand(0,1)],
                     'content' => "Contenido $i",
                     'description' => "Descripcion $i",
-
-                    //solo para ver
-                   // protected $fillable = ['title', 'slug', 'category_id', 'posted', 'content', 'description', 'image'];
                 ]
             );
         }
+
         Schema::enableForeignKeyConstraints();
     }
 }

@@ -20,14 +20,14 @@
         </style>
     </head>
 
-    <div class="container card text-center w-1/3">
+    <div class="mt-12 bg-green-300 container card text-center w-1/3">
         <div>
-            <h1>Benvenuto a la página de Inicio de sesión para ingresar al proyecto.</h1>
+            <h1>Bienvenido a la página de Inicio de sesión para ingresar al proyecto.</h1>
         </div>
     </div>
 
     <body>
-        <div class="container card w-1/3 flex justify-center items-center">
+        <div class="mt-40 bg-green-300 container card w-1/5 flex justify-center items-center">
             <div class="flex">
                 <div>
                     <button class="btn btn-success mr-4">

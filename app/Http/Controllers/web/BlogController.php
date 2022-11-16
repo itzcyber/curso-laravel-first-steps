@@ -11,7 +11,9 @@ class BlogController extends Controller
 
     public function index()
     {
-        $posts = Post::where("posted","yes")->paginate(2);
+        //mostrar solo los que tengan el valor yes; para subir solo los posteados*
+        $posts = Post::where("posted","yes")->paginate(5);
+        
         return view("web.blog.index", compact("posts"));
     }
 

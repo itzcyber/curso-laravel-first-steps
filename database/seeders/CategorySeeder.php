@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+                //disable FK : para evitar problemas al truncar la table; luego trunca table categ
         Schema::disableForeignKeyConstraints();
         Category::truncate();
         
@@ -30,6 +31,7 @@ class CategorySeeder extends Seeder
                 ]
             );
         }
+        //enable FK despues de crear las categorias en la tabla modo seed
         Schema::enableForeignKeyConstraints();
     }
 }
