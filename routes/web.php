@@ -21,8 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/vue', function () {
+    return view('vue');
+});
 
-Route::group(['prefix' => 'dashboard','middleware' => ['auth',"admin"]], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', "admin"]], function () {
 
     Route::get('/', function () {
         return view('dashboard');
@@ -34,12 +37,11 @@ Route::group(['prefix' => 'dashboard','middleware' => ['auth',"admin"]], functio
     ]);
 });
 
-Route::group(['prefix' => 'blog'], function() {
-    Route::controller(BlogController::class)->group(function(){
+Route::group(['prefix' => 'blog'], function () {
+    Route::controller(BlogController::class)->group(function () {
         Route::get('/', "index")->name("web.blog.index");
         Route::get('/{post}', "show")->name("web.blog.show");
-   
-    }); 
-}); 
+    });
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
